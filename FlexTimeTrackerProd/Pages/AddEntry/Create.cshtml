@@ -1,0 +1,45 @@
+﻿@page
+@model FlexTimeTrackerProd.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+    <h1>Add Flex Time</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="AddEntry.Date" class="control-label"></label>
+                <input asp-for="AddEntry.Date" class="form-control" />
+                <span asp-validation-for="AddEntry.Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AddEntry.Minutes" class="control-label"></label>
+                <input asp-for="AddEntry.Minutes" class="form-control" />
+                <span asp-validation-for="AddEntry.Minutes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AddEntry.Notes" class="control-label"></label>
+                <input asp-for="AddEntry.Notes" class="form-control" />
+                <span asp-validation-for="AddEntry.Notes" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="/Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

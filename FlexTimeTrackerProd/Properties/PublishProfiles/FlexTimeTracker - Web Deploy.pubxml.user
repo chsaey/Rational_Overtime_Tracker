@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAkMA4PAoR4E2tjO/vn+Q+/gAAAAACAAAAAAAQZgAAAAEAACAAAAC7H4tA0EpLSCSr76Ppj5Mgz88hkbOuX2I8IM6F2wHVtwAAAAAOgAAAAAIAACAAAABD5sOh8/B9tLA5Pf2zeaqyasq8ti05xdRCLCIXcfXDwoAAAADdunOcSFEyndtwvYb6nSBzYW+DIVcGbzeYxKu5Q7Y/LB+iK4s7WSxwbohdE1O7HsxRzBMWOK99VRs/6eYJvl4w7D0T4jf9cyCfjnJ6IMFKt/XB9mH6veww1ayYX+fZ0F5S/urVyt2Zyaee15tLR1Lgc16jrVqie7VOLsDWyOz3U0AAAABgfEUbvgRmt0dqFxwIBKX0wKNs8AKbA8WXTnhSBgu4sEspTPtAOhsEylP3DVqrEusL79er5Htzy7pIuuwkXU+h</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Data Source=tcp:flextimetrackerdbserver.database.windows.net,1433%3bInitial Catalog=FlexTimeTracker_db%3bUser Id=Charles%40flextimetrackerdbserver%3bPassword=Fall2019!</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="FlexTimeTrackerProd.Data.ApplicationDbContext">
+      <Value>Data Source=tcp:flextimetrackerdbserver.database.windows.net,1433%3bInitial Catalog=FlexTimeTracker_db%3bUser Id=Charles%40flextimetrackerdbserver%3bPassword=Fall2019!</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,149 @@
+﻿@page
+@model FlexTimeTrackerProd.IndexModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+@{
+    ViewData["Title"] = "Index";
+    var user = await UserManager.GetUserAsync(User);
+  
+
+}
+
+
+<div class="row">
+    <div class="col-md-8"></div>
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Total Flex Time Available:</h5>
+            @{ foreach (var u in Model.UserMinutes)
+                {
+                    if (u.ApplicationUserID == user.Id)
+                    {
+                        <p class="card-text">@Html.Raw(u.Minutes / 60) Hour(s) @Html.Raw(u.Minutes % 60) Minute(s)  </p>
+                        break;
+                    }
+                }
+            }
+
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <p>
+            <a asp-page="./AddEntry/Create">Add Flex Time</a>
+        </p>
+        <div class="pre-scrollable" style="max-height: 50vh">
+
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AddEntry[0].Date)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AddEntry[0].Minutes)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AddEntry[0].Notes)
+                        </th>
+                        <th></th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model.AddEntry.Reverse())
+                    {
+
+                        if (user.Id == item.UserID)
+                        {
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Date)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Minutes)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Notes)
+                                </td>
+
+                                <td>
+                                    <a asp-page="/AddEntry/Edit" asp-route-id="@item.ID">Edit</a> |
+                                    <a asp-page="/AddEntry/Delete" asp-route-id="@item.ID">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+        <p>
+            <a asp-page="./UseEntry/Create">Use Flex Time</a>
+        </p>
+        <div class="pre-scrollable" style="max-height: 50vh">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UseEntry[0].Date)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UseEntry[0].Minutes)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UseEntry[0].Notes)
+                        </th>
+
+                        <th></th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.UseEntry.Reverse())
+                    {
+
+                        if (user.Id == item.UserID)
+                        {
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Date)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Minutes)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Notes)
+                                </td>
+
+                                <td>
+                                    <a asp-page="/UseEntry/Edit" asp-route-id="@item.ID">Edit</a> |
+                                    <a asp-page="/UseEntry/Delete" asp-route-id="@item.ID">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</div>
+
